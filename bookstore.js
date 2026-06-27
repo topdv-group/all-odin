@@ -1,6 +1,9 @@
 
-const NOT_FOUND = -1
-const SUCCESS = 'success'
+const bookName = document.querySelector(".bookName")
+const addBookBtn = document.querySelector(".addBook-btn")
+
+const NOT_FOUND = 'NOT_FOUND'
+const SUCCESS = 'SUCCESS'
 
 function getUniqueId(){
     return crypto.randomUUID()
@@ -21,7 +24,7 @@ const library = [
         name:"javascript",
         pages: 50,
         read:true
-    },
+    }
 ];
 
 function addBook(author,name , pages, read = false){
@@ -56,9 +59,17 @@ function removeBook(bookName){
 
 }
 
-// addBook("moms","Eric's tricks", 55 , true)
-// addBook("karions","immaginations", 45 , true)
+addBook("moms","Eric's tricks", 55 , true)
+addBook("karions","immaginations", 45 , true)
 
-console.log(removeBook("python"))
-showLibrary()
+addBookBtn.addEventListener("click",function(){
+    const book_name = prompt("book name")
 
+    const userAddedBook = document.createElement("div")
+    userAddedBook.classList.add("userAddedBookName")
+
+    userAddedBook.append(book_name)
+    bookName.append(userAddedBook);
+
+    console.log(book_name)
+})
