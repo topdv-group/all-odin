@@ -38,6 +38,7 @@ function addBook(author,name , pages, read = false){
     }
 
     library.push(newBook)
+    return newBook
 }
 
 function showLibrary(){
@@ -55,6 +56,7 @@ function removeBook(bookName){
     }
 
     library.splice(found,1)
+
     return SUCCESS
 
 }
@@ -63,13 +65,27 @@ addBook("moms","Eric's tricks", 55 , true)
 addBook("karions","immaginations", 45 , true)
 
 addBookBtn.addEventListener("click",function(){
-    const book_name = prompt("book name")
 
-    const userAddedBook = document.createElement("div")
-    userAddedBook.classList.add("userAddedBookName")
+    const addDialog = document.getElementById("addDialog")
+    const submitBookButton = document.querySelector("#addDialog button")
 
-    userAddedBook.append(book_name)
-    bookName.append(userAddedBook);
+    addDialog.showModal()
+    
+    submitBookButton.addEventListener("click", ()=>{
+        
+        const userInputauthor = document.querySelector("#book-author")
+        const userInputName = document.querySelector("#book-name")
+        const userInputpages = document.querySelector("#book-pages")
+        const checkbox = document.getElementById("book-read")
 
-    console.log(book_name)
+        const reponse = addBook(userInputauthor.value,userInputName.value,Number(userInputpages.value),checkbox.checked)
+
+        upDateGui(reponse);
+
+    })
+  
 })
+
+function upDateGui(reponse){
+    
+}

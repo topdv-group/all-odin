@@ -12,15 +12,28 @@ body{
     flex-direction: column;
     gap: 10%;
 }
-h3{
-    display: inline-block;
-}
-.container{
-    width: 50%;
+
+.bigger-container{
     display: flex;
     flex-direction: row;
-    gap: 20%;
+    gap: 30%;
+    width: 50%;
 }
+.container{
+  display: flex;
+ flex-direction: row;
+ gap: 30%;
+ width: 50%;
+}
+dialog {
+  border: none;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+  width: 90%;
+  max-width: 500px;
+}
+
 .userAddedBookName{
     color: green;
 }

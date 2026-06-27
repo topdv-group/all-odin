@@ -9,13 +9,31 @@
 </head>
 <body>
     <h3>Book Manager</h3>
-    <button class="addBook-btn">ADD BOOK</button>
 
-    <div class="container">
-        <div class="bookName">book name</div>
-        <div class="author">Author</div>
-        <div class="pages">pages</div>
-        <div class="readStatus">read status</div>
+    <div class="bigger-container">
+        
+        <div class="nav-container">
+                
+            <button class="addBook-btn">ADD BOOK</button>
+            <button class="removeBook-btn">REMOVE BOOK</button>
+
+        </div>
+
+        <div class="container">
+            <div class="bookName">book name</div>
+            <div class="author">Author</div>
+            <div class="pages">pages</div>
+            <div class="readStatus">read status</div>
+        </div>
     </div>
+
+    <dialog id = "addDialog">
+        <input id="book-name" type ="text" placeholder="book name">
+        <input id="book-author"  type="text" placeholder="Author">
+        <input id="book-pages"   type="text" placeholder="pages">
+        <input id="book-read"  type="checkbox" >
+        <button>submit</button>
+    </dialog>
+    
 </body>
 </html>
