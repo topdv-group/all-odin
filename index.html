@@ -14,16 +14,28 @@
         
         <div class="nav-container">
                 
-            <button class="addBook-btn">ADD BOOK</button>
-            <button class="removeBook-btn">REMOVE BOOK</button>
+            <button class="addBook-btn">ADD</button>
+            <button class="removeBook-btn">REMOVE</button>
 
         </div>
 
         <div class="container">
-            <div class="bookName">book name</div>
-            <div class="author">Author</div>
-            <div class="pages">pages</div>
-            <div class="readStatus">read status</div>
+            <div class="bookName">
+                <h3>Book Name</h3> 
+                <div class="bookName-list"></div> 
+            </div>
+            <div class="author ">
+                <h3>Author</h3> 
+                <div class="authors-list"></div> 
+            </div>
+            <div class="pages ">
+                <h3>Pages</h3> 
+                <div class="pages-list"></div> 
+            </div>
+            <div class="readStatus ">
+                <h3>Read</h3> 
+                <div class="reads-list"></div> 
+            </div>
         </div>
     </div>
 
@@ -33,6 +45,11 @@
         <input id="book-pages"   type="text" placeholder="pages">
         <input id="book-read"  type="checkbox" >
         <button>submit</button>
+    </dialog>
+    <dialog id = "removeDialog">
+        <input id="bookname" type ="text" placeholder="book name">
+        <input id="bookauthor"  type="text" placeholder="Author">
+        <button>delete</button>
     </dialog>
     
 </body>

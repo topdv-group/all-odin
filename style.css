@@ -8,23 +8,55 @@ body{
     height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: center;
+    margin-top: 3%;
     flex-direction: column;
-    gap: 10%;
+}
+h3{
+    padding-bottom: 5%;
 }
 
 .bigger-container{
     display: flex;
     flex-direction: row;
-    gap: 30%;
+    gap: 5%;
     width: 50%;
+    
 }
 .container{
-  display: flex;
+display: flex;
  flex-direction: row;
  gap: 30%;
  width: 50%;
 }
+.nav-container{
+    display: flex;
+    flex-direction: column;
+    gap: 10%;
+    
+}
+button{
+    color: gray;
+    padding: 2%;
+    border: 1px gray solid;
+
+}
+.bookName,
+.author,
+.pages,
+.readStatus
+{
+    color: green;
+}
+.addedBookNameDiv,
+.addedBookAuthorDiv,
+.addedBookPagesDiv,
+.addedBookReadStatus{
+    color: rgb(96, 96, 96);
+    display: flex;
+
+}
+    
+
 dialog {
   border: none;
   border-radius: 12px;
