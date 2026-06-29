@@ -1,3 +1,6 @@
+
+//now going to work upon beutiful removal of the book
+
 const addBookBtn = document.querySelector(".addBook-btn")
 const submitBookButton = document.querySelector("#addDialog button")
 const deleteBookButton = document.querySelector("#removeDialog button")
@@ -6,11 +9,81 @@ const removeBookBtn = document.querySelector(".removeBook-btn")
 const NOT_FOUND = 'NOT_FOUND'
 const SUCCESS = 'SUCCESS'
 
+const library = [];
+
+// Default books added first
+addBook("moms","Eric's tricks", 55 , true)
+addBook("karions","immaginations", 45 , true)
+addBook("ons","nations", 5 , true)
+addBook("kk2","CULTURE", 50 , false)
+
+//-----------EVENT LISTENERS--------------
+
+addBookBtn.addEventListener("click",()=>{
+    addDialog.showModal()
+});
+
+removeBookBtn.addEventListener("click", () => {
+  const removeDialog = document.getElementById("removeDialog");
+  removeDialog.innerHTML = ""; 
+
+  const bookList = document.createElement("div");
+  bookList.classList.add("bookList");
+
+  const renderList = () => {
+    bookList.innerHTML = ""; 
+    
+    if (library.length === 0) {
+      removeDialog.close();
+      return;
+    }
+
+    library.forEach((book, index) => {
+      const bookRow = document.createElement("div");
+      bookRow.classList.add("book-row");
+      bookRow.textContent = `${book.name} `;
+
+      const xButton = document.createElement("button");
+      xButton.classList.add("xButton");
+      xButton.innerText = "X";
+
+      xButton.addEventListener("click", () => {
+        library.splice(index, 1); 
+        renderList();          
+      });
+
+      bookRow.appendChild(xButton);
+      bookList.appendChild(bookRow);
+    });
+  };
+
+  renderList(); 
+  removeDialog.appendChild(bookList);
+  removeDialog.showModal(); 
+
+});
+
+
+submitBookButton.addEventListener("click", ()=>{
+    const userInputauthor = document.querySelector("#book-author")
+    const userInputName = document.querySelector("#book-name")
+    const userInputpages = document.querySelector("#book-pages")
+    const checkbox = document.getElementById("book-read")
+    
+    const response = addBook(userInputauthor.value, userInputName.value,Number(userInputpages.value),checkbox.checked)
+    updateGui(response);
+    addDialog.close();
+});
+
+//----------------End of event listener--------------
+
+
+
+//-------------FUNCTIONS------------
+
 function getUniqueId(){
     return crypto.randomUUID()
 }
-
-const library = [ ];
 
 function loadDefaultBooks(){
     // FIXED: Clear the main column containers instead of non-existent individual divs
@@ -36,10 +109,10 @@ function addBook(author,name , pages, read = false){
     return newBook
 }
 
-function showLibrary(){
-    library.forEach(element => {
-        console.log(`${element.bookId} ${element.author} ${element.name} - ${element.pages} read: ${element.read}`)
-    });
+function showLibrary() {
+  return library.map(element => {
+    return `${element}`;
+  });
 }
 
 function removeBook(bookName){
@@ -51,41 +124,8 @@ function removeBook(bookName){
     return SUCCESS
 }
 
-// Default books added first
-addBook("moms","Eric's tricks", 55 , true)
-addBook("karions","immaginations", 45 , true)
-addBook("ons","nations", 5 , true)
-addBook("kk2","CULTURE", 50 , false)
-
-// Load event listeners
-addBookBtn.addEventListener("click",()=>{
-    addDialog.showModal()
-})
-
-submitBookButton.addEventListener("click", ()=>{
-    const userInputauthor = document.querySelector("#book-author")
-    const userInputName = document.querySelector("#book-name")
-    const userInputpages = document.querySelector("#book-pages")
-    const checkbox = document.getElementById("book-read")
-    
-    const response = addBook(userInputauthor.value, userInputName.value,Number(userInputpages.value),checkbox.checked)
-    updateGui(response);
-    addDialog.close();
-})
-
-removeBookBtn.addEventListener("click",()=>{
-    removeDialog.showModal()
-})
-
-deleteBookButton.addEventListener('click',()=>{
-    const _bookname = document.getElementById("bookname")
-    var response = removeBook(_bookname.value)
-    removeDialog.close()
-    loadDefaultBooks()
-    console.log(response)
-})
-
-function updateGui(response){
+//--------responsive to update the --GUI--
+function updateGui(book){
     const bookName = document.querySelector(".bookName-list");
     const author = document.querySelector(".authors-list");
     const pages = document.querySelector(".pages-list");
@@ -101,10 +141,10 @@ function updateGui(response){
     addedBookPages.classList.add("addedBookPagesDiv")
     addedBookReadStatus.classList.add("addedBookReadStatus")
 
-    addedBookName.textContent = response.name
-    addedBookAuthor.textContent = response.author
-    addedBookPages.textContent = response.pages
-    addedBookReadStatus.textContent = response.read ? "Yes" : "No" // Cleans up true/false display
+    addedBookName.textContent = book.name
+    addedBookAuthor.textContent = book.author
+    addedBookPages.textContent = book.pages
+    addedBookReadStatus.textContent = book.read ? "Yes" : "No" 
 
     bookName.append(addedBookName)
     author.append(addedBookAuthor)
@@ -112,5 +152,7 @@ function updateGui(response){
     readStatus.append(addedBookReadStatus)
 }
 
-// Runs perfectly now without throwing errors
+
+
 loadDefaultBooks();
+
