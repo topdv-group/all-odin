@@ -5,6 +5,8 @@ const addBookBtn = document.querySelector(".addBook-btn")
 const submitBookButton = document.querySelector("#addDialog button")
 const deleteBookButton = document.querySelector("#removeDialog button")
 const removeBookBtn = document.querySelector(".removeBook-btn")
+const cancel = document.querySelector(".submit-button #cancel")
+
 
 const NOT_FOUND = 'NOT_FOUND'
 const SUCCESS = 'SUCCESS'
@@ -19,6 +21,10 @@ addBook("kk2","Culture", 50 , false)
 
 //-----------EVENT LISTENERS--------------
 
+cancel.addEventListener("click",()=>{
+  addDialog.close();
+})
+
 addBookBtn.addEventListener("click",()=>{
   addDialog.showModal()
 });
@@ -26,6 +32,14 @@ addBookBtn.addEventListener("click",()=>{
 removeBookBtn.addEventListener("click", () => {
   const removeDialog = document.getElementById("removeDialog");
   removeDialog.innerHTML = ""; 
+
+  const bookListcancel = document.createElement("button")
+  bookListcancel.classList.add("bookListcancel")
+  bookListcancel.textContent = "Back"
+
+  bookListcancel.addEventListener("click",()=>{
+    removeDialog.close()
+  })
 
   const bookList = document.createElement("div");
   bookList.classList.add("bookList");
@@ -54,6 +68,9 @@ removeBookBtn.addEventListener("click", () => {
 
       bookRow.appendChild(xButton);
       bookList.appendChild(bookRow);
+
+      bookList.append(bookListcancel);
+
     });
   };
 
@@ -77,8 +94,6 @@ submitBookButton.addEventListener("click", ()=>{
 
 //----------------End of event listener--------------
 
-
-
 //-------------FUNCTIONS------------
 
 function getUniqueId(){
@@ -98,15 +113,16 @@ function loadDefaultBooks(){
 }
 
 function addBook(author,name , pages, read = false){
-    const newBook = {
-        bookId:getUniqueId(),
-        author,
-        name,
-        pages,
-        read
-    }
-    library.push(newBook)
-    return newBook
+  const newBook = {
+    bookId:getUniqueId(),
+    author,
+    name,
+    pages,
+    read
+  }
+  
+  library.push(newBook)
+  return newBook
 }
 
 function showLibrary() {
