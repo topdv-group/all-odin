@@ -13,14 +13,14 @@ const library = [];
 
 // Default books added first
 addBook("moms","Eric's tricks", 55 , true)
-addBook("karions","immaginations", 45 , true)
-addBook("ons","nations", 5 , true)
-addBook("kk2","CULTURE", 50 , false)
+addBook("karions","Immaginations", 45 , true)
+addBook("ons","Nations", 5 , true)
+addBook("kk2","Culture", 50 , false)
 
 //-----------EVENT LISTENERS--------------
 
 addBookBtn.addEventListener("click",()=>{
-    addDialog.showModal()
+  addDialog.showModal()
 });
 
 removeBookBtn.addEventListener("click", () => {

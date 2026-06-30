@@ -32,14 +32,65 @@ display: flex;
     display: flex;
     flex-direction: column;
     gap: 10%;
+    margin-right: 20%;
     
 }
-button{
+.nav-container button{
     color: gray;
-    padding: 2%;
+    overflow:hidden;
+    width: 100px;
+    padding: 5%;
+    margin: 2%;
     border: 1px gray solid;
-
+    background-color: rgb(91, 56, 245);
+    color: rgb(252, 252, 252);
 }
+#addDialog{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    
+}
+#addDialog input{
+    padding: 2%;
+    border: 1px solid rgb(194, 194, 194);
+    border-radius: 10px;
+    
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+.book-row{
+    display: flex;
+    justify-content: space-evenly;
+}
+.book-row button{
+    color: rgb(255, 0, 0);
+    padding: 1%;
+    width: 8%;
+    border: none;
+    background-color: white;
+}
+#addDialog #submit{
+    color: rgb(255, 255, 255);
+    background-color: green;
+    border: none;
+    padding: 2%;
+    border-radius: 10px;
+}
+#addDialog #cancel{
+    color: rgb(255, 255, 255);
+    background-color: rgb(255, 125, 125);
+    border: none;
+    padding: 2%;
+    border-radius: 10px;
+}
+.read-status-div label{
+    color: gray;
+}
+
 .bookName,
 .author,
 .pages,
